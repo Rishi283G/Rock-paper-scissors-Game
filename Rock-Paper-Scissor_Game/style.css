@@ -1,0 +1,358 @@
+:root {
+  --primary: #5d48e8;
+  --primary-light: #8c7cf5;
+  --primary-dark: #3a2bc2;
+  --background: #f8f9fe;
+  --card-bg: #ffffff;
+  --text-dark: #2d2d2d;
+  --text-light: #7a7a7a;
+  --success: #4caf50;
+  --danger: #f44336;
+  --neutral: #607d8b;
+  --border-radius: 16px;
+  --shadow: 0 10px 30px rgba(93, 72, 232, 0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background);
+  background-image: radial-gradient(
+      circle at top right,
+      rgba(93, 72, 232, 0.05),
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(93, 72, 232, 0.05),
+      transparent 70%
+    );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-dark);
+  padding: 2rem 1rem;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-align: center;
+  position: relative;
+}
+
+.game-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: var(--primary-light);
+  border-radius: 2px;
+  margin: 0.5rem auto 0;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.score-board:hover {
+  box-shadow: 0 15px 35px rgba(93, 72, 232, 0.15);
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 15%;
+}
+
+.score-label {
+  font-size: 1rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.score-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.user-score .score-value {
+  color: var(--primary);
+}
+
+.computer-score .score-value {
+  color: var(--danger);
+}
+
+.vs {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  color: var(--neutral);
+  position: relative;
+}
+
+.vs::before,
+.vs::after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: rgba(96, 125, 139, 0.3);
+  position: absolute;
+}
+
+.vs::before {
+  left: -25px;
+}
+
+.vs::after {
+  right: -25px;
+}
+
+.hands {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hand-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.hand-container:hover {
+  box-shadow: 0 15px 35px rgba(93, 72, 232, 0.15);
+  transform: translateY(-5px);
+}
+
+.hand-title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.hand-icon {
+  font-size: 5rem;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  transition: transform 0.3s ease;
+}
+
+.result {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 1.2rem;
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.result.win {
+  color: var(--success);
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+.result.lose {
+  color: var(--danger);
+  background-color: rgba(244, 67, 54, 0.05);
+}
+
+.result.tie {
+  color: var(--neutral);
+  background-color: rgba(96, 125, 139, 0.05);
+}
+
+.icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.choice-btn {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  border: 3px solid transparent;
+  box-shadow: var(--shadow);
+  font-size: 2.2rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+  outline: none;
+}
+
+.choice-btn:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(93, 72, 232, 0.2);
+  border-color: var(--primary-light);
+}
+
+.choice-btn:active {
+  transform: translateY(0);
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.shakeUserHands {
+  animation: shakeUserHands 0.6s infinite ease-in-out;
+}
+
+.shakeComputerHands {
+  animation: shakeComputerHands 0.6s infinite ease-in-out;
+}
+
+@keyframes shakeUserHands {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes shakeComputerHands {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/* Victory animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 1s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .hand-icon {
+    font-size: 4rem;
+    height: 100px;
+  }
+
+  .choice-btn {
+    width: 65px;
+    height: 65px;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .score-board {
+    padding: 1rem;
+  }
+
+  .score-value {
+    font-size: 1.8rem;
+  }
+
+  .vs {
+    font-size: 1.2rem;
+  }
+
+  .vs::before,
+  .vs::after {
+    width: 15px;
+  }
+
+  .vs::before {
+    left: -18px;
+  }
+
+  .vs::after {
+    right: -18px;
+  }
+
+  .hand-icon {
+    font-size: 3.5rem;
+    height: 90px;
+  }
+
+  .choice-btn {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+
+  .hand-title {
+    font-size: 0.9rem;
+  }
+
+  .result {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+}
